@@ -18,10 +18,10 @@ class ContactFactory extends Factory
     public function definition()
     {
         return [
-            'first_name' => $this->faker->name(),
-            'last_name' => $this->faker->name(),
+            'first_name' => $this->faker->firstName($gender = 'male' | 'female'),
+            'last_name' => $this->faker->lastName($gender = 'male' | 'female'),
             'address' => $this->faker->address(),
-            'phone' => $this->faker->phoneNumber(),
+            'phone' => $this->faker->numerify('+88017##-######' | '+88018##-######'| '+88019##-######'| '+88016##-######'| '+88015##-######'),
             'email' => $this->faker->email(),
             'company_id' => Company::pluck('id')->random(),
         ];
