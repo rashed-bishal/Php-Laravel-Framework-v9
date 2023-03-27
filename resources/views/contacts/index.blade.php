@@ -25,8 +25,8 @@
                   <div class="col-md-6">
                     <div class="row">
                       <div class="col">
-                        <select class="custom-select">
-                          <option value="" selected>All Companies</option>
+                        <select id="companies_id" class="custom-select">
+                          <option value="" selected >All Companies</option>
                           @if($companies->count())
                             @foreach($companies as $id => $name)
                                 <option value="{{$id}}">{{$name}}</option>

@@ -21,7 +21,7 @@ class ContactFactory extends Factory
             'first_name' => $this->faker->firstName($gender = 'male' | 'female'),
             'last_name' => $this->faker->lastName($gender = 'male' | 'female'),
             'address' => $this->faker->address(),
-            'phone' => $this->faker->numerify('+88017##-######' | '+88018##-######'| '+88019##-######'| '+88016##-######'| '+88015##-######'),
+            'phone' => $this->faker->regexify('01[5-9]{1}[0-9]{2}-[0-9]{6}'),
             'email' => $this->faker->email(),
             'company_id' => Company::pluck('id')->random(),
         ];

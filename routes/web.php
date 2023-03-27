@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
 
+Route::get('/contacts/company/{id}',[ContactController::class, 'filteredContacts'])->name('contacts.company.filter');
+
 
 Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
 

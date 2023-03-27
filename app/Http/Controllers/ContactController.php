@@ -12,7 +12,16 @@ class ContactController extends Controller
     public function index()
     {
         $companies = Company::orderBy('name','asc')->pluck('name', 'id');
-        $contacts = Contact::select('first_name', 'last_name', 'email', 'company_id')->orderBy('first_name', 'asc')->paginate(5);
+        $contacts = Contact::select('first_name', 'last_name', 'email', 'company_id')->orderBy('first_name', 'asc')->paginate(20);
+        return view('contacts.index', compact('contacts', 'companies'));
+    }
+
+    public function filteredContacts($id)
+    {
+        $companies = Company::orderBy('name','asc')->pluck('name', 'id');
+        $contacts = Contact::select('first_name', 'last_name', 'email', 'company_id')->where('company_id', $id)
+                    ->orderBy('first_name')->paginate(10);
+
         return view('contacts.index', compact('contacts', 'companies'));
     }
 
