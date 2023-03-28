@@ -74,5 +74,12 @@ class ContactController extends Controller
         return redirect()->route('contacts.index');
     }
 
+    public function erase(Request $request)
+    {
+        Contact::destroy($request->id_Contact);
+
+        return redirect()->route('contacts.index');
+    }
+
 
 }

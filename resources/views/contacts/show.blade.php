@@ -60,7 +60,7 @@
                     <div class="form-group row mb-0">
                       <div class="col-md-9 offset-md-3">
                           <a href="{{route('contacts.edit', $contact->id)}}" class="btn btn-info">Edit</a>
-                          <a href="#" class="btn btn-outline-danger">Delete</a>
+                          <a href="" class="btn btn-outline-danger"><form action="{{route('contacts.erase')}}" method="POST">@csrf<input type="hidden" name="id_Contact" value="{{$contact->id ?? ''}}"/><input value="Delete" type="submit"/></form></a>
                           <a href="{{route('contacts.index')}}" class="btn btn-outline-secondary">Cancel</a>
                       </div>
                     </div>

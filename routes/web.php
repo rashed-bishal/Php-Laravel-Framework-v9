@@ -30,3 +30,5 @@ Route::get('/contacts/edit/{id}',[ContactController::class, 'edit'])->name('cont
 Route::post('/contacts/upgrade',[ContactController::class, 'update'])->name('contacts.update');
 
 Route::post('/contacts/store',[ContactController::class, 'store'])->name('contacts.store');
+
+Route::post('/contacts/erase',[ContactController::class, 'erase'])->name('contacts.erase');
