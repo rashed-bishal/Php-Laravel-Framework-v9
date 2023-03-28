@@ -25,6 +25,8 @@ Route::get('/contacts/create', [ContactController::class, 'create'])->name('cont
 
 Route::get('/contacts/{id}', [ContactController::class, 'show'])->name('contacts.show');
 
+Route::get('/contacts/edit/{id}',[ContactController::class, 'edit'])->name('contacts.edit');
+
 Route::post('/contacts/upgrade',[ContactController::class, 'update'])->name('contacts.update');
 
-Route::get('/contacts/edit/{id}',[ContactController::class, 'edit'])->name('contacts.edit');
+Route::post('/contacts/store',[ContactController::class, 'store'])->name('contacts.store');

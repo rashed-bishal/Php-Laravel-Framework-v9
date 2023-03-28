@@ -27,7 +27,8 @@ class ContactController extends Controller
 
     public function create()
     {
-        return view('contacts.create');
+        $companies = Company::orderBy('name','asc')->pluck('name', 'id');
+        return view('contacts.create', compact('companies'));
     }
 
     public function show($id)
@@ -57,6 +58,20 @@ class ContactController extends Controller
 
         return redirect()->route('contacts.index');
 
+    }
+
+    public function store(Request $request)
+    {
+        Contact::create([
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'email'=>$request->email,
+            'address'=>$request->address,
+            'phone'=>$request->phone,
+            'company_id'=>$request->company_id,
+        ]);
+
+        return redirect()->route('contacts.index');
     }
 
 
