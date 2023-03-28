@@ -32,7 +32,32 @@ class ContactController extends Controller
 
     public function show($id)
     {
+        $companies = Company::orderBy('name','asc')->pluck('name', 'id');
         $contact = Contact::find($id);
-        return view('contacts.show', compact('contact'));
+        return view('contacts.show', compact('contact', 'companies'));
     }
+
+    public function edit($id)
+    {
+        $companies = Company::orderBy('name','asc')->pluck('name', 'id');
+        $contact = Contact::find($id);
+        return view('contacts.edit', compact('contact', 'companies'));
+    }
+
+    public function update(Request $request)
+    {
+        $contact = Contact::find($request->id_Contact)->update([
+            'first_name'=>$request->first_name,
+            'last_name' =>$request->last_name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'address'=>$request->address,
+            'company_id'=>$request->company_id,
+        ]);
+
+        return redirect()->route('contacts.index');
+
+    }
+
+
 }

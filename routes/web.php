@@ -21,8 +21,10 @@ Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.ind
 
 Route::get('/contacts/company/{id}',[ContactController::class, 'filteredContacts'])->name('contacts.company.filter');
 
-
 Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
 
-
 Route::get('/contacts/{id}', [ContactController::class, 'show'])->name('contacts.show');
+
+Route::post('/contacts/upgrade',[ContactController::class, 'update'])->name('contacts.update');
+
+Route::get('/contacts/edit/{id}',[ContactController::class, 'edit'])->name('contacts.edit');
