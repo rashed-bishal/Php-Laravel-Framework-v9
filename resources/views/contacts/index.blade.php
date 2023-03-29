@@ -73,7 +73,7 @@
                               <td width="150">
                                 <a href="{{ route('contacts.show', $contact->id) }}" class="btn btn-sm btn-circle btn-outline-info" title="Show"><i class="fa fa-eye"></i></a>
                                 <a href="{{route('contacts.edit', $contact->id)}}" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
-                                <button class="btn btn-sm btn-circle btn-outline-danger" title="Delete"><form method="POST" action="{{route('contacts.erase')}}">@csrf<input type="submit" value=""></form></button>
+                                <button class="btn btn-sm btn-circle btn-outline-danger" title="Delete"><i class="fa fa-times"></i></button>
                               </td>
                             </tr>
                         @endforeach
