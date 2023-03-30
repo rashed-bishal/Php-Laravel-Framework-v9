@@ -68,7 +68,7 @@ class ContactController extends Controller
             'email' => 'required|email',
             'address'=>'required',
             'phone'=>'required',
-            //'company_id'=> 'required | exists:companies, id',
+            'company_id'=> 'required|exists:companies,id',
         ]);
 
         Contact::create([
