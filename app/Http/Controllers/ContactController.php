@@ -16,13 +16,32 @@ class ContactController extends Controller
         return view('contacts.index', compact('contacts', 'companies'));
     }
 
-    public function filteredContacts($id)
+    public function filteredContacts($id = null)
     {
-        $companies = Company::orderBy('name','asc')->pluck('name', 'id');
-        $contacts = Contact::select('id', 'first_name', 'last_name', 'email', 'company_id')->where('company_id', $id)
-                    ->orderBy('first_name')->paginate(10);
 
-        return view('contacts.index', compact('contacts', 'companies'));
+        $companies = Company::orderBy('name','asc')->pluck('name', 'id');
+        if(isset($id))
+        {
+            $contacts = Contact::select('id', 'first_name', 'last_name', 'email', 'company_id')->where('company_id',$id)
+                    ->orderBy('first_name')->paginate(10);
+            return view('contacts.index', compact('contacts', 'companies'));
+        }
+        else if(!empty(request('search')))
+        {
+            $search = request('search');
+            if(isset($search))
+            {
+                $contacts = Contact::select('id', 'first_name', 'last_name', 'email', 'company_id')->where('first_name','LIKE',"%{$search}%")
+                            ->orderBy('first_name')->paginate(10);  
+
+                return view('contacts.index', compact('contacts', 'companies'));
+            }
+        }  
+         else
+        {
+            
+            return redirect()->route('contacts.index');
+        }   
     }
 
     public function create()
