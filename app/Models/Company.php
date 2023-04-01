@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Contact;
 
+use App\Scopes\AscendingArrangeScope;
+
 class Company extends Model
 {
     use HasFactory;
@@ -17,8 +19,8 @@ class Company extends Model
         return $this->hasMany(Contact::class);
     }
 
-    public function scopeListCompanies($query)
+    public static function booted()
     {
-        return $query->orderBy('name', 'asc')->pluck('name', 'id');
+        static::addGlobalScope(new AscendingArrangeScope);
     }
 }

@@ -11,7 +11,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $companies = Company::ListCompanies();
+        $companies = Company::pluck('name','id');
         $contacts = Contact::select('id', 'first_name', 'last_name', 'email', 'company_id')->orderBy('first_name', 'asc')->paginate(20);
         return view('contacts.index', compact('contacts', 'companies'));
     }
@@ -19,7 +19,7 @@ class ContactController extends Controller
     public function filteredContacts($id = null)
     {
 
-        $companies = Company::orderBy('name','asc')->pluck('name', 'id');
+        $companies = Company::pluck('name','id');
         if(isset($id))
         {
             $contacts = Contact::select('id', 'first_name', 'last_name', 'email', 'company_id')->where('company_id',$id)
@@ -32,6 +32,8 @@ class ContactController extends Controller
             if(isset($search))
             {
                 $contacts = Contact::select('id', 'first_name', 'last_name', 'email', 'company_id')->where('first_name','LIKE',"%{$search}%")
+                            ->orWhere('last_name','LIKE',"%{$search}%")
+                            ->orWhere('email','LIKE',"%{$search}%")
                             ->orderBy('first_name')->paginate(10);  
 
                 return view('contacts.index', compact('contacts', 'companies'));
@@ -46,20 +48,20 @@ class ContactController extends Controller
 
     public function create()
     {
-        $companies = Company::orderBy('name','asc')->pluck('name', 'id');
+        $companies = Company::pluck('name','id');
         return view('contacts.create', compact('companies'));
     }
 
     public function show($id)
     {
-        $companies = Company::orderBy('name','asc')->pluck('name', 'id');
+        $companies = Company::pluck('name','id');
         $contact = Contact::find($id);
         return view('contacts.show', compact('contact', 'companies'));
     }
 
     public function edit($id)
     {
-        $companies = Company::orderBy('name','asc')->pluck('name', 'id');
+        $companies = Company::pluck('name','id');
         $contact = Contact::find($id);
         return view('contacts.edit', compact('contact', 'companies'));
     }
