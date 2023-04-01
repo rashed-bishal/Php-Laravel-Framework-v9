@@ -52,17 +52,15 @@ class ContactController extends Controller
         return view('contacts.create', compact('companies'));
     }
 
-    public function show($id)
+    public function show(Contact $contact)
     {
         $companies = Company::pluck('name','id');
-        $contact = Contact::find($id);
         return view('contacts.show', compact('contact', 'companies'));
     }
 
-    public function edit($id)
+    public function edit(Contact $contact)
     {
         $companies = Company::pluck('name','id');
-        $contact = Contact::find($id);
         return view('contacts.edit', compact('contact', 'companies'));
     }
 
