@@ -67,7 +67,7 @@
               <option value="">Select Company</option>
               @if($companies->count())
               	@foreach($companies as $id => $name)
-              		<option {{$id === old('id') ? 'selected' : ''}} value="{{$id}}">{{$name}}</option>
+              		<option {{$id == $contact->company_id ? 'selected' : ''}}  value="{{$id}}">{{$name}}</option>
               	@endforeach
               @endif
             </select>

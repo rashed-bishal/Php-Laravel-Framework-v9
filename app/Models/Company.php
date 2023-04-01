@@ -16,4 +16,9 @@ class Company extends Model
     {
         return $this->hasMany(Contact::class);
     }
+
+    public function scopeListCompanies($query)
+    {
+        return $query->orderBy('name', 'asc')->pluck('name', 'id');
+    }
 }

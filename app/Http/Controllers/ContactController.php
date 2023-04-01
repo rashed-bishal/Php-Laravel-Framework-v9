@@ -11,7 +11,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $companies = Company::orderBy('name','asc')->pluck('name', 'id');
+        $companies = Company::ListCompanies();
         $contacts = Contact::select('id', 'first_name', 'last_name', 'email', 'company_id')->orderBy('first_name', 'asc')->paginate(20);
         return view('contacts.index', compact('contacts', 'companies'));
     }
