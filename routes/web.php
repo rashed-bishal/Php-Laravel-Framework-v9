@@ -34,4 +34,10 @@ Route::get('/', function () {
 
 // Route::post('/contacts/erase',[ContactController::class, 'erase'])->name('contacts.erase');
 
-Route::apiResource('/companies.contacts',CompanyController::class);
+Route::resource('/companies',CompanyController::class)->names([
+    'index' => 'AllCompanies',
+    'show' => 'ShowCompany',
+    'destroy' => 'DeleteCompany',
+])->parameters([
+    'companies' => 'INDUSTRY',
+]);
