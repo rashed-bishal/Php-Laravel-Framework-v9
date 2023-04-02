@@ -23,7 +23,7 @@ Route::get('/contacts/company/{id?}',[ContactController::class, 'filteredContact
 
 Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
 
-Route::get('/contacts/{contact:first_name}', [ContactController::class, 'show'])->name('contacts.show');
+Route::get('/contacts/{contact}', [ContactController::class, 'show'])->name('contacts.show');
 
 Route::get('/contacts/edit/{contact}',[ContactController::class, 'edit'])->name('contacts.edit');
 
