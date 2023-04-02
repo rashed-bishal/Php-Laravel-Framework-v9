@@ -32,4 +32,11 @@ class UpdateContactRequest extends FormRequest
             'company_id'=> 'required|exists:companies,id',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'company_id' => 'company',
+        ];
+    }
 }
