@@ -18,26 +18,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
 
-// Route::get('/contacts/company/{id?}',[ContactController::class, 'filteredContacts'])->name('contacts.company.filter');
+Route::get('/contacts/company/{id?}',[ContactController::class, 'filteredContacts'])->name('contacts.company.filter');
 
-// Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
+Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
 
-// Route::get('/contacts/{contact}', [ContactController::class, 'show'])->name('contacts.show');
+Route::get('/contacts/{contact}', [ContactController::class, 'show'])->name('contacts.show');
 
-// Route::get('/contacts/edit/{contact}',[ContactController::class, 'edit'])->name('contacts.edit');
+Route::get('/contacts/edit/{contact}',[ContactController::class, 'edit'])->name('contacts.edit');
 
-// Route::post('/contacts/upgrade',[ContactController::class, 'update'])->name('contacts.update');
+Route::post('/contacts/upgrade',[ContactController::class, 'update'])->name('contacts.update');
 
-// Route::post('/contacts/store',[ContactController::class, 'store'])->name('contacts.store');
+Route::post('/contacts/store',[ContactController::class, 'store'])->name('contacts.store');
 
-// Route::post('/contacts/erase',[ContactController::class, 'erase'])->name('contacts.erase');
+Route::post('/contacts/erase',[ContactController::class, 'erase'])->name('contacts.erase');
 
-Route::resource('/companies',CompanyController::class)->names([
-    'index' => 'AllCompanies',
-    'show' => 'ShowCompany',
-    'destroy' => 'DeleteCompany',
-])->parameters([
-    'companies' => 'INDUSTRY',
-]);

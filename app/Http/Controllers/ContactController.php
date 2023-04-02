@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Company;
+use App\Http\Requests\StoreContactRequest;
+use App\Http\Requests\UpdateContactRequest;
 
 class ContactController extends Controller
 {
@@ -64,7 +66,7 @@ class ContactController extends Controller
         return view('contacts.edit', compact('contact', 'companies'));
     }
 
-    public function update(Request $request)
+    public function update(UpdateContactRequest $request)
     {
         $contact = Contact::find($request->id_Contact)->update([
             'first_name'=>$request->first_name,
@@ -79,17 +81,8 @@ class ContactController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(StoreContactRequest $request)
     {
-        $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'address'=>'required',
-            'phone'=>'required',
-            'company_id'=> 'required|exists:companies,id',
-        ]);
-
         Contact::create([
             'first_name'=>$request->first_name,
             'last_name'=>$request->last_name,
