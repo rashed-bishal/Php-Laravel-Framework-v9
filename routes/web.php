@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CompanyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,4 +34,4 @@ Route::get('/', function () {
 
 // Route::post('/contacts/erase',[ContactController::class, 'erase'])->name('contacts.erase');
 
-Route::resource('/contacts', ContactController::class);
+Route::apiResource('/company',CompanyController::class);
