@@ -39,4 +39,12 @@ class UpdateContactRequest extends FormRequest
             'company_id' => 'company',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'email.required' => "Why the hell did you keep the email field empty?",
+            'email.email' => "This is an obnoxious type email address. Change it now!",
+        ];
+    }
 }
