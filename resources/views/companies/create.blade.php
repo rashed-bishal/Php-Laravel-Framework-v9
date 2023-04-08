@@ -17,7 +17,7 @@ Create a new company
               <div class="card-header card-title">
                 <strong>Add New Company</strong>
               </div>           
-              <form action="#" method="POST">
+              <form action="{{route('company.store')}}" method="POST">
                 @csrf
                 @include('includes._form-alt')
               </form>
