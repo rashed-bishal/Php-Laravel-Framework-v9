@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('title')
+{{$contact->first_name}}'s Information
+@endsection
+
 @section('navbar')
 	@include('includes.navbar')
 @endsection

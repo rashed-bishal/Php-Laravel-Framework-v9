@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('title')
+Edit a contact
+@endsection
+
 @section('navbar')
 	@include('includes.navbar')
 @endsection

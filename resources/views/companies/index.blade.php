@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
 @section('title')
-Contact List
+Company List
 @endsection
 
 @section('navbar')
-    @include('includes.navbar')
+	@include('includes.navbar')
 @endsection
 
 @section('content')
-    <main class="py-5">
+	<main class="py-5">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -18,17 +18,17 @@ Contact List
                   <div class="d-flex align-items-center">
                     <h2 class="mb-0">All Contacts</h2>
                     <div class="ml-auto">
-                      <a href="{{route('contacts.create')}}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add New</a>
+                      <a href="" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add New</a>
                     </div>
                   </div>
                 </div>
               <div class="card-body">
-                <form method="GET" action="{{route('contacts.company.filter')}}">
+                <form method="GET" action="">
                   <div class="row">
                   <div class="col-md-6"></div>
                   <div class="col-md-6">
                     <div class="row">
-                      <div class="col">
+                      <!-- <div class="col">
                         <select id="companies_id" class="custom-select">
                           <option value="" selected >All Companies</option>
                           @if($companies->count())
@@ -37,7 +37,7 @@ Contact List
                             @endforeach
                           @endif
                         </select>
-                      </div>
+                      </div> -->
                       <div class="col">
                         <div class="input-group mb-3">
                           <input type="text" class="form-control" name="search" id="search" value="{{request('search')}}" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
@@ -59,26 +59,24 @@ Contact List
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">First Name</th>
-                      <th scope="col">Last Name</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Website</th>
                       <th scope="col">Email</th>
-                      <th scope="col">Company</th>
                       <th scope="col">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @if($contacts->count())
-                        @foreach($contacts as $index => $contact)
+                    @if($companies->count())
+                        @foreach($companies as $index => $company)
                             <tr>
-                              <th scope="row">{{$index+$contacts->firstItem()}}</th>
-                              <td>{{$contact->first_name}}</td>
-                              <td>{{$contact->last_name}}</td>
-                              <td>{{$contact->email}}</td>
-                              <td>{{$contact->company->name}}</td>
+                              <th scope="row">{{$index}}</th>
+                              <td>{{$company->name}}</td>
+                              <td>{{$company->website}}</td>
+                              <td>{{$company->email}}</td>
                               <td width="150">
-                                <a href="{{ route('contacts.show', $contact->id) }}" class="btn btn-sm btn-circle btn-outline-info" title="Show"><i class="fa fa-eye"></i></a>
-                                <a href="{{route('contacts.edit', $contact->id)}}" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
-                                <form method="POST" action="{{route('contacts.erase')}}">@csrf<input type="hidden" name="id_Contact" value="{{$contact->id ?? ''}}"/><input type="submit" class="btn btn-sm btn-circle btn-outline-danger"  title="Delete" value="×"></a></form>
+                                <a href="" class="btn btn-sm btn-circle btn-outline-info" title ="Show"><i class="fa fa-eye"></i></a>
+                                <a href="" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
+                                <form method="POST" action="">@csrf<input type="hidden" name="id_Contact" value=""/><input type="submit" class="btn btn-sm btn-circle btn-outline-danger"  title="Delete" value="×"></a></form>
                               </td>
                             </tr>
                         @endforeach
@@ -87,7 +85,7 @@ Contact List
                 </table> 
 
                 <nav class="mt-4">
-                    {{$contacts->links()}}
+                    {{$companies->links()}}
                   </nav>
               </div>
             </div>

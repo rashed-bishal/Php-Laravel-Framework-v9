@@ -34,3 +34,5 @@ Route::post('/contacts/store',[ContactController::class, 'store'])->name('contac
 
 Route::post('/contacts/erase',[ContactController::class, 'erase'])->name('contacts.erase');
 
+
+Route::resource('/company',CompanyController::class);
