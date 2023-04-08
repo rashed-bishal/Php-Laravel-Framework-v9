@@ -60,7 +60,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return view('companies.edit', compact('company'));
     }
 
     /**
@@ -72,7 +72,8 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $company->update($request->only('name', 'address', 'website', 'email'));
+        return redirect()->route('company.index');
     }
 
     /**
@@ -83,6 +84,8 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+
+        $company->delete();
+        return redirect()->route('company.index');
     }
 }

@@ -75,8 +75,8 @@ Company List
                               <td>{{$company->email}}</td>
                               <td width="150">
                                 <a href="{{route('company.show', $company->id)}}" class="btn btn-sm btn-circle btn-outline-info" title ="Show"><i class="fa fa-eye"></i></a>
-                                <a href="" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
-                                <form method="POST" action="">@csrf<input type="hidden" name="id_Contact" value=""/><input type="submit" class="btn btn-sm btn-circle btn-outline-danger"  title="Delete" value="×"></a></form>
+                                <a href="{{route('company.edit',$company->id)}}" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
+                                <form method="POST" action="{{route('company.destroy', $company->id)}}">@csrf @method('DELETE') <input type="submit" class="btn btn-sm btn-circle btn-outline-danger"  title="Delete" value="×"></a></form>
                               </td>
                             </tr>
                         @endforeach

@@ -50,9 +50,10 @@
                     <hr>
                     <div class="form-group row mb-0">
                       <div class="col-md-9 offset-md-3">
-                          <a href="" class="btn btn-info">Edit</a>
-                          <a href="" class="btn btn-outline-danger"><form action="" method="POST">@csrf<input type="hidden" name="id_Contact" value="{{$company->id ?? ''}}"/><input value="Delete" type="submit"/></form></a>
-                          <a href="" class="btn btn-outline-secondary">Cancel</a>
+                                <a href="{{route('company.show', $company->id)}}" class="btn btn-sm btn-circle btn-outline-info" title ="Show"><i class="fa fa-eye"></i></a>
+                          <a href="{{route('company.edit',$company->id)}}" class="btn btn-info">Edit</a>
+                          <a href="" class="btn btn-outline-danger"><form action="{{route('company.destroy', $company->id)}}" method="POST">@csrf @method('DELETE')<input value="Delete" type="submit"/></form></a>
+                          <a href="{{route('company.index')}}" class="btn btn-outline-secondary">Cancel</a>
                       </div>
                     </div>
                   </div>
