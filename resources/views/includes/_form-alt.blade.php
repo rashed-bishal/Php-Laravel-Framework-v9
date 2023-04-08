@@ -26,10 +26,10 @@
         </div>
 
         <div class="form-group row">
-          <label for="phone" class="col-md-3 col-form-label">Website</label>
+          <label for="website" class="col-md-3 col-form-label">Website</label>
           <div class="col-md-9">
-            <input type="text" name="website" id="website" class="form-control @error('website') is-invalid @enderror" value="{{$company->phone ?? old('phone')}}"/>
-            @error('phone')
+            <input type="text" name="website" id="website" class="form-control @error('website') is-invalid @enderror" value="{{$company->website ?? old('website')}}"/>
+            @error('website')
             <div class="invalid-feedback">
               {{$message}}
             </div>

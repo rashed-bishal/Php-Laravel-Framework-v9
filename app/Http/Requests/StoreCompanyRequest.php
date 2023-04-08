@@ -26,7 +26,7 @@ class StoreCompanyRequest extends FormRequest
         return [
             'name'=>'required',
             'address'=>'required',
-            'webwsite'=>'required',
+            'website'=>'required',
             'email'=>'required|email',
         ];
     }

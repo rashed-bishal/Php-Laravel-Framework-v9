@@ -63,7 +63,7 @@ Company List
                       <th scope="col">Website</th>
                       <th scope="col">Email</th>
                       <th scope="col">Actions</th>
-                    </tr>
+                    </tr>D
                   </thead>
                   <tbody>
                     @if($companies->count())
@@ -74,7 +74,7 @@ Company List
                               <td>{{$company->website}}</td>
                               <td>{{$company->email}}</td>
                               <td width="150">
-                                <a href="" class="btn btn-sm btn-circle btn-outline-info" title ="Show"><i class="fa fa-eye"></i></a>
+                                <a href="{{route('company.show', $company->id)}}" class="btn btn-sm btn-circle btn-outline-info" title ="Show"><i class="fa fa-eye"></i></a>
                                 <a href="" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
                                 <form method="POST" action="">@csrf<input type="hidden" name="id_Contact" value=""/><input type="submit" class="btn btn-sm btn-circle btn-outline-danger"  title="Delete" value="×"></a></form>
                               </td>
