@@ -88,4 +88,10 @@ class CompanyController extends Controller
         $company->delete();
         return redirect()->route('company.index');
     }
+
+    public function searchResult($search)
+    {
+        $companies = Company::where('name','LIKE', $search)->orWhere('address','LIKE', $search)->orWhere('website','LIKE',$search)->orWhere('email','LIKE', $search)->get();
+        return view('companies.index', compact('companies'));
+    }
 }

@@ -31,3 +31,8 @@ $(document).ready(function(){
 		window.location.href = "/contacts";
 	});
 });
+
+/*$(document).ready(function(){
+	
+});
+*/
