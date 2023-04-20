@@ -37,4 +37,4 @@ Route::post('/contacts/erase',[ContactController::class, 'erase'])->name('contac
 
 Route::resource('/company',CompanyController::class);
 
-Route::get('/company/{search}/search',[CompanyController::class, 'searchResult'])->name('company.search');
+Route::get('/company/filter', [ContactController::class, 'searchResult'])->name('company.filter');

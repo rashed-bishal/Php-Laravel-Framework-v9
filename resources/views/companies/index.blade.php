@@ -23,7 +23,7 @@ Company List
                   </div>
                 </div>
               <div class="card-body">
-                <form method="GET" action="{{route('company.search', search_C)}}">
+                <form method="GET" action="{{route('company.filter')}}">
                   <div class="row">
                   <div class="col-md-6"></div>
                   <div class="col-md-6">
@@ -40,7 +40,7 @@ Company List
                       </div> -->
                       <div class="col">
                         <div class="input-group mb-3">
-                          <input type="text" class="form-control" name="search_C" id="search_C" value="{{request('name')}}" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
+                          <input type="text" class="form-control" name="search" id="search" value="{{request('search')}}" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
                           <div class="input-group-append">
                               <button class="btn btn-outline-secondary" id="btn-refresh" type="button">
                                   <i class="fa fa-refresh"></i>

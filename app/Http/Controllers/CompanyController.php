@@ -89,9 +89,12 @@ class CompanyController extends Controller
         return redirect()->route('company.index');
     }
 
-    public function searchResult($search)
+    public function searchResult(Request $request)
     {
-        $companies = Company::where('name','LIKE', $search)->orWhere('address','LIKE', $search)->orWhere('website','LIKE',$search)->orWhere('email','LIKE', $search)->get();
+        $res = $request->input('search');
+        dd($res);
+
+        $companies = Company::where('name','LIKE', request('search'))->orWhere('website','LIKE',request('search'))->orWhere('email','LIKE', request('search'))->get();
         return view('companies.index', compact('companies'));
     }
 }
